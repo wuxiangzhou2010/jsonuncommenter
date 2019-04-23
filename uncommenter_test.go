@@ -9,33 +9,34 @@ import (
 
 func TestRemoveComment(t *testing.T) {
 
-	js := struct{ in, out string }{
+	cases := []struct{ in, out string }{{
 		`
 {
     "seeds": [
-        "http://t66y.com/thread0806.php?fid=16"// http下载
+        "https://www.baidu.com"// http下载
 //
-      // "http://t66y.com/thread0806.php?fid=21"
+      // "https://v.qq.com"
     ]
 }`, `
 {
     "seeds": [
-        "http://t66y.com/thread0806.php?fid=16"
+        "https://www.baidu.com"
     ]
-}`}
+}`}}
 
-	reader := strings.NewReader(js.in)
-	newReader := RemoveComment(reader)
+	for _, js := range cases {
+		reader := strings.NewReader(js.in)
+		newReader := RemoveComment(reader)
 
-	bs, err := ioutil.ReadAll(newReader)
-	if err != nil {
-		log.Fatal(err)
+		bs, err := ioutil.ReadAll(newReader)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		out := string(bs)
+
+		if out != js.out {
+			t.Fatal("want:", js.out, "got: ", out)
+		}
 	}
-
-	out := string(bs)
-
-	if out != js.out {
-		t.Fatal("want:", js.out, "got: ", out)
-	}
-
 }

@@ -1,0 +1,8 @@
+{
+  "seeds": [
+    "https://www.baidu.com" // http下载
+    //
+    // "https://v.qq.com"
+  ],
+  "name": "test"
+}

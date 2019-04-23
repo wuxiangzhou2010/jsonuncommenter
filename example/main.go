@@ -1,17 +1,3 @@
-# Json uncommenter
-
-remove comment from the json file.
-
-1. Only line comment `//` is supported.
-2. Multi-line comment `/**/` is not supported.
-
-## Example
-
-please find the example in [example folder](./example)
-
-main.go
-
-```go
 package main
 
 import (
@@ -46,25 +32,3 @@ func main() {
 	jsonParser.Decode(&s)
 	fmt.Printf("%+v", s)
 }
-
-```
-
-config.json
-
-```json
-{
-  "seeds": [
-    "https://www.baidu.com" // http下载
-    //
-    // "https://v.qq.com"
-  ],
-  "name": "test"
-}
-```
-
-output
-
-```sh
-$ go run main.go
-{Seeds:[http://t66y.com/thread0806.php?fid=16] Name:test}
-```
