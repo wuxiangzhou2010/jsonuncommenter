@@ -68,3 +68,7 @@ output
 $ go run main.go
 {Seeds:[http://t66y.com/thread0806.php?fid=16] Name:test}
 ```
+
+reference
+
+- [strip-out-c-style-comments-from-a-byte]( https://stackoverflow.com/questions/12682405/strip-out-c-style-comments-from-a-byte)
